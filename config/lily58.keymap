@@ -35,26 +35,6 @@ void oled_update(void) {
   oled_driver_update(&oled);
 }
 
-// Handle OLED-related events
-bool oled_process_keycode(uint32_t keycode, bool pressed) {
-  if (pressed) {
-    switch (keycode) {
-      case KC_OLED_SHOW_MESSAGE:
-        // Show a custom message on the OLED screen
-        oled_driver_set_cursor(&oled, 0, 0);
-        oled_driver_print(&oled, "Custom Message");
-        oled_driver_update(&oled);
-        return true;
-      
-      // Add more cases for other OLED-related keycodes
-      
-      default:
-        break;
-    }
-  }
-
-  return false;
-}
 
 / {
 	chosen {
