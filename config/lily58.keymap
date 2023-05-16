@@ -11,28 +11,10 @@
 #include <dt-bindings/zmk/rgb.h>
 #include <drivers/oled/oled.h>
 
-// Define an OLED object
-oled_t oled;
-
 // Initialize the OLED screen
 void oled_init(void) {
   oled_driver_init(&oled, /* OLED parameters */);
   oled_driver_enable(&oled);
-}
-
-// Update the OLED screen display
-void oled_update(void) {
-  // Clear the OLED screen
-  oled_driver_clear(&oled);
-
-  // Set the cursor position
-  oled_driver_set_cursor(&oled, 0, 0);
-
-  // Print text on the OLED screen
-  oled_driver_print(&oled, "Kriscables");
-
-  // Update the OLED screen display
-  oled_driver_update(&oled);
 }
 
 
