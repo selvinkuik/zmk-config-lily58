@@ -9,6 +9,52 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/rgb.h>
+#include <drivers/oled/oled.h>
+
+// Define an OLED object
+oled_t oled;
+
+// Initialize the OLED screen
+void oled_init(void) {
+  oled_driver_init(&oled, /* OLED parameters */);
+  oled_driver_enable(&oled);
+}
+
+// Update the OLED screen display
+void oled_update(void) {
+  // Clear the OLED screen
+  oled_driver_clear(&oled);
+
+  // Set the cursor position
+  oled_driver_set_cursor(&oled, 0, 0);
+
+  // Print text on the OLED screen
+  oled_driver_print(&oled, "Kriscables");
+
+  // Update the OLED screen display
+  oled_driver_update(&oled);
+}
+
+// Handle OLED-related events
+bool oled_process_keycode(uint32_t keycode, bool pressed) {
+  if (pressed) {
+    switch (keycode) {
+      case KC_OLED_SHOW_MESSAGE:
+        // Show a custom message on the OLED screen
+        oled_driver_set_cursor(&oled, 0, 0);
+        oled_driver_print(&oled, "Custom Message");
+        oled_driver_update(&oled);
+        return true;
+      
+      // Add more cases for other OLED-related keycodes
+      
+      default:
+        break;
+    }
+  }
+
+  return false;
+}
 
 / {
 	chosen {
