@@ -11,12 +11,6 @@
 #include <dt-bindings/zmk/rgb.h>
 #include <drivers/oled/oled.h>
 
-// Initialize the OLED screen
-void oled_init(void) {
-  oled_driver_init(&oled, /* OLED parameters */);
-  oled_driver_enable(&oled);
-}
-
 
 / {
 	chosen {
